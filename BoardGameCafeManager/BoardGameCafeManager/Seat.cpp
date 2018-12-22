@@ -79,7 +79,7 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 	firstIndex = lastIndex = NULL;
 	while (true)
 	{
-		if (firstIndex == NULL) // customer초기값 설정
+		if (firstIndex == NULL) // seat 초기값 설정
 		{
 			firstIndex = head;
 			lastIndex = head;
@@ -88,7 +88,7 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 		{
 			lastIndex->setNext(firstIndex->getNext());
 			delete firstIndex;
-			this->head = NULL;
+			this->head = NULL;//헤더에 쓰레기값 방지
 			return;
 		}
 		if (firstIndex->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
