@@ -7,23 +7,25 @@
 
 
 //Setter Function
+void Seat::setGame(std::string game) { this->game = game; };
 void Seat::setNumber(int number) { this->number = number; };
 void Seat::setLine(std::string line) { this->line = line; };
 void Seat::setName(std::string name) { this->name = name; };
 void Seat::setNext(Seat* next) { this->next = next; };
 
 //Getter Function
+std::string Seat::getGame() { return game; };
 int Seat::getNumber() { return number; };
 std::string Seat::getLine() { return line; };
 std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
 
 //기능 함수
-void Seat::SeatAdd(std::string line, std::string name, int number)
+void Seat::SeatAdd(std::string line, std::string name, int number, std::string g)
 {
 	Seat *seat = new Seat;
 
-	if (head == NULL)     //head,last pointer setting
+	if (head == NULL)  //head,last pointer setting
 	{
 		head = seat;
 		last = seat;
@@ -34,19 +36,26 @@ void Seat::SeatAdd(std::string line, std::string name, int number)
 		last = seat;
 	}
 
-	seat->setLine(line); seat->setName(name), seat->setNumber(number), seat->setNumber(number);
+	seat->setLine(line); seat->setName(name), seat->setNumber(number), seat->setGame(g);//각 변수의 저장
 };
 void Seat::SeatList()
 {
 	Seat *seat = NULL;
+
 	while (true)
 	{
+		if (head == NULL)//리스트에 아무것도 없을 때 (head 가 null일때 오류 방지)
+		{
+			std::cout << "예약 인원이 없습니다.\n";
+			return;
+		}
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() //자리와 이름 리스트로 출력
-			<< "\t인원수 : " << seat->getNumber() << std::endl; //하는 사람 인원수와 게임 추가 예정
+			<< "\t인원수 : " << seat->getNumber() << "\t게임 : " << seat->getGame() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
+
 		seat = seat->getNext();
 	}
 };
@@ -63,7 +72,8 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		if (searchStr == (seat->*func)())//
-			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 : " << seat->getNumber() << std::endl;
+			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 : " << seat->getNumber()
+			<< "\t게임 : " << seat->getGame() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
 		seat = seat->getNext();
@@ -89,6 +99,7 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 		{
 			lastIndex->setNext(firstIndex->getNext());
 			delete firstIndex;
+			std::cout << "삭제가 완료되었습니다.\n";
 			this->head = NULL;//헤더에 쓰레기값 방지
 			return;
 		}
