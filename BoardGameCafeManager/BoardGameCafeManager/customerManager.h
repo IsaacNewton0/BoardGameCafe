@@ -12,7 +12,7 @@ using std::endl;
 class Customer         //Customer information class
 {
 private:
-	string name,ph;// name(customer name), ph(customer phone number)
+	string name, ph;// name(customer name), ph(customer phone number)
 	int visit;      //customer visit time
 	Customer* next; //Linked list node
 

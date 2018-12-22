@@ -38,7 +38,7 @@ CustomerManager::CustomerManager()// head 초기화
 }
 
 /*Operator*/
-void CustomerManager::CustomerRegister(string name,string ph)
+void CustomerManager::CustomerRegister(string name, string ph)
 {
 	Customer* customer = new Customer;
 	if (head->GetNext() == NULL)// head,last 초기화
@@ -69,12 +69,12 @@ void CustomerManager::CustomerList()
 }
 void CustomerManager::CustomerSearch(string searchStr, string mod)
 {
-	Customer *customer =head->GetNext();
+	Customer *customer = head->GetNext();
 	string(Customer::*func)() = NULL;//멤버함수 포인터 사용
 	//검색 모드
 	if (mod == "name")
 		func = &Customer::GetName;
-	else if(mod == "phone")
+	else if (mod == "phone")
 		func = &Customer::GetPh;
 
 	while (true) //손님 검색
@@ -146,7 +146,7 @@ void CustomerManager::CustomerSave(string filename)
 	}
 	fileStream.close();
 
-	
+
 }
 void CustomerManager::CustomerLoad(string filename)
 {
