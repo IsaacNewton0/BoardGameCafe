@@ -6,6 +6,8 @@
 #include<string>
 
 using std::string;
+using std::cout;
+using std::endl;
 
 class Customer         //Customer information class
 {
@@ -13,7 +15,6 @@ private:
 	string name,ph;// name(customer name), ph(customer phone number)
 	int visit;      //customer visit time
 	Customer* next; //Linked list node
-	Customer *head, *last; // 링크드 리스트 헤드,라스트
 
 public:
 	/*Setter Function*/
@@ -28,10 +29,26 @@ public:
 	int GetVisit();
 	Customer* GetNext();
 
-	/*기능 함수*/
-	void CustomerRegister(string name, string ph);//사용자 등록(name은 사용자이름,ph은 사용자 전화번호)
-	void Customerlist();//사용자 목록
-	void CustomerSearch(string searchStr,string mod);//사용자 검색(searchStr은 이름 또는 전화번호 mod는 검색 모드 :mod = "phone" or "name")
-	void CustomerDelete(string searchStr, string mod);//사용자 삭제(searchStr은 이름 또는 전화번호 mod는 검색 모드 :mod = "phone" or "name")
+	/*Operator*/
+	void ShowInfo();
+};
+
+class CustomerManager
+{
+private:
+	Customer *head, *last;
+
+public:
+
+	CustomerManager();
+
+	/*Operator*/
+	void CustomerRegister(string name, string ph);//사용자 등록
+	void CustomerList();//사용자 목록 출력
+	void CustomerSearch(string searchStr, string mod);// 사용자 검색
+	void CustomerDelete(string searchStr, string mod);// 사용자 삭제
+	void ShowMenu();// 메뉴 출력
+	void CustomerSave(string filename);// 사용자 목록 파일로 저장
+	void CustomerLoad(string filename);// 사용자 목록 파일 읽어오기
 };
 #endif // !CUSTOMERMANAGER_H
