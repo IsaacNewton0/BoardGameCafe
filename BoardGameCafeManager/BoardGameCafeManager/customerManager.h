@@ -9,6 +9,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
+//고객 개인의 정보
 class Customer         //Customer information class
 {
 private:
@@ -33,6 +34,7 @@ public:
 	void ShowInfo();
 };
 
+//고객 전체의 정보 관리
 class CustomerManager
 {
 private:
