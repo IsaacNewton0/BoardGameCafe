@@ -28,7 +28,7 @@ void Seat::SeatAdd(std::string line, std::string name)
 		head = seat;
 		last = seat;
 	}
-	else   //pointing next customer
+	else   //pointing next seat
 	{
 		last->setNext(seat);
 		last = seat;
@@ -43,7 +43,8 @@ void Seat::SeatList()
 	{
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
-		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << std::endl;
+		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << std::endl;//자리와 이름 리스트로 출력
+		//하는 사람 인원수와 게임 추가 예정
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
 		seat = seat->getNext();
@@ -61,7 +62,7 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 	{
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
-		if (searchStr == (seat->*func)())
+		if (searchStr == (seat->*func)())//
 			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
@@ -84,7 +85,7 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 			firstIndex = head;
 			lastIndex = head;
 		}
-		if (searchStr == (firstIndex->*func)())
+		if (searchStr == (firstIndex->*func)())//seat값 찾아서 삭제
 		{
 			lastIndex->setNext(firstIndex->getNext());
 			delete firstIndex;
