@@ -7,19 +7,19 @@
 
 
 //Setter Function
+void Seat::setNumber(int number) { this->number = number; };
 void Seat::setLine(std::string line) { this->line = line; };
 void Seat::setName(std::string name) { this->name = name; };
-void Seat::setNext(Seat* next) {
-	this->next = next;
-};
+void Seat::setNext(Seat* next) { this->next = next; };
 
 //Getter Function
+int Seat::getNumber() { return number; };
 std::string Seat::getLine() { return line; };
 std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
 
 //기능 함수
-void Seat::SeatAdd(std::string line, std::string name)
+void Seat::SeatAdd(std::string line, std::string name, int number)
 {
 	Seat *seat = new Seat;
 
@@ -34,7 +34,7 @@ void Seat::SeatAdd(std::string line, std::string name)
 		last = seat;
 	}
 
-	seat->setLine(line); seat->setName(name);
+	seat->setLine(line); seat->setName(name), seat->setNumber(number), seat->setNumber(number);
 };
 void Seat::SeatList()
 {
@@ -43,8 +43,8 @@ void Seat::SeatList()
 	{
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
-		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << std::endl;//자리와 이름 리스트로 출력
-		//하는 사람 인원수와 게임 추가 예정
+		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() //자리와 이름 리스트로 출력
+			<< "\t인원수 : " << seat->getNumber() << std::endl; //하는 사람 인원수와 게임 추가 예정
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
 		seat = seat->getNext();
@@ -63,7 +63,7 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		if (searchStr == (seat->*func)())//
-			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << std::endl;
+			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 : " << seat->getNumber() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
 		seat = seat->getNext();
