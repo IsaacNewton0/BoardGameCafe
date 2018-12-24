@@ -1,4 +1,4 @@
-// 20181521 김의중 / 기말 과제 / 좌석 예약 프로그램
+// 기말 과제 / 좌석 예약 프로그램
 
 #include "pch.h"
 #include "Seat.h"
@@ -69,6 +69,11 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 	Seat *seat = NULL;
 	while (true)
 	{
+		if (head == NULL)//리스트에 아무것도 없을 때 (head 가 null일때 오류 방지)
+		{
+			std::cout << "예약 인원이 없습니다.\n";
+			return;
+		}
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		if (searchStr == (seat->*func)())//
