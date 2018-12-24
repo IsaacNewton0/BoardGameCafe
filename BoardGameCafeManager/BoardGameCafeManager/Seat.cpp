@@ -1,4 +1,4 @@
-// 기말 과제 / 좌석 예약 프로그램
+// 기말 과제 / 보드 게임 카페 만들기 / 좌석 예약 프로그램 / class Seat
 
 #include "pch.h"
 #include "Seat.h"
@@ -19,6 +19,14 @@ int Seat::getNumber() { return number; };
 std::string Seat::getLine() { return line; };
 std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
+
+Seat::Seat()//각 함수 초기화
+{
+	head = new Seat;
+	head->setNext(NULL);
+	head->setName("");
+	head->setLine("");
+};
 
 //기능 함수
 void Seat::SeatAdd(std::string line, std::string name, int number, std::string g)
@@ -51,7 +59,7 @@ void Seat::SeatList()
 		}
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
-		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() //자리와 이름 리스트로 출력
+		std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() //예약된 자리, 이름, 인원수, 할 게임 리스트로 출력
 			<< "\t인원수 : " << seat->getNumber() << "\t게임 : " << seat->getGame() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
@@ -69,7 +77,7 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 	Seat *seat = NULL;
 	while (true)
 	{
-		if (head == NULL || searchStr != (head->*func)())//리스트에 아무것도 없을 때 (head 가 null일때 오류 방지)
+		if (head == NULL || searchStr != (head->*func)())//리스트에 아무것도 없을 때 또는 잘못된 값을 넣었을때 나타나는 오류 방지
 		{
 			std::cout << "예약 인원이 없습니다.\n";
 			return;
@@ -114,4 +122,12 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 		lastIndex = firstIndex;
 		firstIndex = firstIndex->getNext();
 	}
+};
+void Seat::Showmenu()
+{
+	std::cout << "1. 자리 예약 등록\n";
+	std::cout << "2. 자리 예약 리스트\n";
+	std::cout << "3. 자리 예약 검색\n";
+	std::cout << "4. 자리 예약 삭제\n";
+	std::cout << "0. 돌아가기\n";
 };

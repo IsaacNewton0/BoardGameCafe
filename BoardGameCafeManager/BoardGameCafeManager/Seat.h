@@ -11,7 +11,7 @@ private:
 	Seat* next;//linked list node
 	Seat *head, *last;//linked list head, last
 public:
-	Seat() { ; };
+	Seat();
 
 	//setter funtion
 	void setGame(std::string g);//game : 할 게임
@@ -32,4 +32,5 @@ public:
 	void SeatList();//사용자 리스트 출력
 	void SeatSearch(std::string searchStr, std::string mod);//사용자 검색(searchStr은 이름 또는 자리, mods == (line) || (name))
 	void SeatDelete(std::string searchStr, std::string mod);//사용자 삭제
+	void Showmenu();//자리 메뉴 출력
 };
