@@ -69,7 +69,7 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 	Seat *seat = NULL;
 	while (true)
 	{
-		if (head == NULL)//리스트에 아무것도 없을 때 (head 가 null일때 오류 방지)
+		if (head == NULL || searchStr != (head->*func)())//리스트에 아무것도 없을 때 (head 가 null일때 오류 방지)
 		{
 			std::cout << "예약 인원이 없습니다.\n";
 			return;
