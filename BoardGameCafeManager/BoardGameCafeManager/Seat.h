@@ -11,7 +11,7 @@ private:
 	Seat* next;//linked list node
 	Seat *head, *last;//linked list head, last
 public:
-	Seat();
+	Seat() { ; };
 
 	//setter funtion
 	void setGame(std::string g);//game : ÇÒ °ÔÀÓ

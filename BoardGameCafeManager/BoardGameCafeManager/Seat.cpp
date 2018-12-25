@@ -20,14 +20,6 @@ std::string Seat::getLine() { return line; };
 std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
 
-Seat::Seat()//각 함수 초기화
-{
-	head = new Seat;
-	head->setNext(NULL);
-	head->setName("");
-	head->setLine("");
-};
-
 //기능 함수
 void Seat::SeatAdd(std::string line, std::string name, int number, std::string g)
 {
