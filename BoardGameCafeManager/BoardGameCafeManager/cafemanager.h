@@ -6,6 +6,7 @@
 #include<iostream>
 #include"customerManager.h"
 #include"Seat.h"
+#include<Windows.h>
 
 using std::cout;
 using std::string;
@@ -113,6 +114,10 @@ public:
 				cout << "다시 입력하세요" << endl;
 				break;
 			}
+			getchar();
+			cout << "계속하려면 Enter를 누르세요";
+			getchar();
+			system("cls");
 		}
 		// 함수 종료시 자동 세이브
 		customerManager->CustomerSave("CustomerInfo.txt");

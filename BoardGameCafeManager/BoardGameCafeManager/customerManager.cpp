@@ -168,7 +168,6 @@ void CustomerManager::ShowMenu()
 	cout << "3. 사용자 목록 출력" << endl;
 	cout << "4. 사용자 검색" << endl;
 	cout << "5. 사용자 삭제" << endl;
-	cout << "6. 사용자 정보 전체 저장" << endl;
 	cout << "0. 돌아가기" << endl;
 	cout << "***********************\n\n" << endl;
 }
