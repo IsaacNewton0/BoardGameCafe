@@ -93,7 +93,7 @@ public:
 
 				else if (searchModint == 2)
 				{
-					searchModStr = "ph";
+					searchModStr = "phone";
 					cout << "삭제할 휴대폰 번호 입력: "; cin >> searchStr;
 				}
 				else
@@ -142,8 +142,10 @@ public:
 			{
 				/*자리 예약 등록*/
 			case 1:
-				cout << "자리, 사용자 이름, 사용할 게임이름, 플레이시간, 어른 청소년 수를 입력하세요\n";
-				cin >> line >> name >> g >> u_t >> a_n >> c_n;
+				cout << "자리, 사용자 이름, 사용할 게임이름을 입력하세요: ";
+				cin >> line >> name >> g;
+				cout <<	"플레이시간, 어른 수, 청소년 수를 입력하세요 : ";
+				cin >> u_t >> a_n >> c_n;
 				seat->SeatAdd(line, name, g, u_t, a_n, c_n);
 				break;
 

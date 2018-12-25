@@ -62,14 +62,14 @@ void Seat::SeatAdd(std::string line, std::string name, std::string g, int u_t, i
 		}
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 		{
-			if (check = false)
-			{
-				std::cout << "예약된 자리가 없습니다.\n";
+			if (check = true)
+			{			
+				std::cout << "예약되었습니다.\n";
 				return;
 			}
 			else
 			{
-				std::cout << "예약되었습니다.\n";
+				std::cout << "예약된 자리가 없습니다.\n";
 				return;
 			}
 		}
@@ -126,16 +126,22 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		if (searchStr == (seat->*func)())//
+		{
 			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 (어른, 청소년): "
-			<< seat->getNumber_a() << ", " << seat->getNumber_c() << "\t게임 : " << seat->getGame()
-			<< "\t이용 시간 : " << seat->getTime() << "\t요금 : " << seat->getMoney() << std::endl;
+				<< seat->getNumber_a() << ", " << seat->getNumber_c() << "\t게임 : " << seat->getGame()
+				<< "\t이용 시간 : " << seat->getTime() << "\t요금 : " << seat->getMoney() << std::endl;
+		}
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
+		{
+			std::cout << "등록되지 않았습니다.\n";
 			return;
+		}
 		seat = seat->getNext();
 	}
 };
 void Seat::SeatDelete(std::string searchStr, std::string mod)
 {
+	Seat *seat = NULL;
 	std::string(Seat::*func)() = NULL; //멤버함수포인터사용
 	if (mod == "line" || mod == "Line")
 		func = &Seat::getLine;
@@ -156,7 +162,7 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 			delete firstIndex;
 			firstIndex = NULL;
 			std::cout << "삭제가 완료되었습니다.\n";
-			return;
+				return;
 		}
 		if (firstIndex->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
@@ -167,12 +173,14 @@ void Seat::SeatDelete(std::string searchStr, std::string mod)
 };
 void Seat::Showmenu()
 {
+	std::cout << "***********************\n";
 	std::cout << "1. 자리 예약 등록\n";
 	std::cout << "2. 자리 예약 리스트\n";
 	std::cout << "3. 자리 예약 검색\n";
 	std::cout << "4. 자리 예약 삭제\n";
 	std::cout << "5. 자리 설정\n";//자리의 기본은 5, 10으로 하고 만약 자리가 달라진다면 사용
 	std::cout << "0. 돌아가기\n";//메인으로 돌아가기
+	std::cout << "***********************\n\n";
 };
 void Seat::SeatSave(int width, int length)
 {
