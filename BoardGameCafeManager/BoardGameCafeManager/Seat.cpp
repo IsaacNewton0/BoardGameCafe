@@ -8,19 +8,31 @@
 
 //Setter Function
 void Seat::setGame(std::string game) { this->game = game; };
-void Seat::setNumber(int number) { this->number = number; };
+void Seat::setNumber_a(int a_number) { this->a_number = a_number; };
+void Seat::setNumber_c(int c_number) { this->c_number = c_number; };
+void Seat::setTime(int time) { this->time = time; };
+void Seat::setMoney(int money) { this->money = money; };
+void Seat::setAge(std::string age) { this->age = age; };
 void Seat::setLine(std::string line) { this->line = line; };
 void Seat::setName(std::string name) { this->name = name; };
 void Seat::setNext(Seat* next) { this->next = next; };
 
 //Getter Function
 std::string Seat::getGame() { return game; };
-int Seat::getNumber() { return number; };
+int Seat::getNumber_a() { return a_number; };
+int Seat::getNumber_c() { return c_number; };
+int Seat::getTime() { return time; };
+std::string Seat::getAge() { return age; };
+int Seat::getMoney() { return money; };
 std::string Seat::getLine() { return line; };
 std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
 
 //기능 함수
+void Seat::seatMoney(int a_n, int c_n)
+{
+
+};
 void Seat::SeatLine(std::string line)
 {
 	Seat *seat = new Seat;
@@ -38,7 +50,7 @@ void Seat::SeatLine(std::string line)
 
 	seat->setLine(line);
 };
-void Seat::SeatAdd(std::string line, std::string name, int number, std::string g)
+void Seat::SeatAdd(std::string line, std::string name, std::string g, int u_t, int a_n, int c_n)
 {
 	Seat *seat = NULL;
 	bool check = false;
@@ -49,7 +61,9 @@ void Seat::SeatAdd(std::string line, std::string name, int number, std::string g
 			seat = head;
 		if (line == seat->getLine())
 		{
-			seat->setName(name), seat->setNumber(number), seat->setGame(g);//각 변수의 저장
+			money = (a_n * 2500 * u_t) + (c_n * 2000 * u_t);
+			seat->setName(name), seat->setNumber_a(a_n), seat->setNumber_c(c_n),
+				seat->setGame(g), seat->setTime(u_t), seat->setMoney(money);//각 변수의 저장
 			check = true;
 		}
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
@@ -83,10 +97,12 @@ void Seat::SeatList()
 		}
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
-		if (seat->getNumber() != 0)
+		if (seat->getNumber_a() != 0)
 		{
 			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() //예약된 자리, 이름, 인원수, 할 게임 리스트로 출력
-				<< "\t인원수 : " << seat->getNumber() << "\t게임 : " << seat->getGame() << std::endl;
+				<< "\t인원수 (어른, 청소년): " << seat->getNumber_a() << ", " << seat->getNumber_c()
+				<< "\t게임 : " << seat->getGame() << "\t이용 시간 : " << seat->getTime()
+				<< "\t요금 : " << seat->getMoney() << std::endl;
 			cnt++;
 		}
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
@@ -116,8 +132,9 @@ void Seat::SeatSearch(std::string searchStr, std::string mod)
 		if (seat == NULL) // seat초기값 설정
 			seat = head;
 		if (searchStr == (seat->*func)())//
-			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 : " << seat->getNumber()
-			<< "\t게임 : " << seat->getGame() << std::endl;
+			std::cout << "자리 : " << seat->getLine() << "\t이름 : " << seat->getName() << "\t인원 수 (어른, 청소년): "
+			<< seat->getNumber_a() << ", " << seat->getNumber_c() << "\t게임 : " << seat->getGame()
+			<< "\t이용 시간 : " << seat->getTime() << "\t요금 : " << seat->getMoney() << std::endl;
 		if (seat->getNext() == NULL)// 마지막 노드에 도달하면 함수 종료
 			return;
 		seat = seat->getNext();
@@ -171,7 +188,7 @@ void Seat::SeatSave(int width, int length)
 	{
 		for (int j = 0; j < length; j++)
 		{
-			fileStream << i + 1 << "-" << j + 1 << std::endl;//파일에 자리 입력
+			fileStream << i + 1 << "-" << j + 1 << std::endl;
 		}
 	}
 	fileStream.close();
@@ -186,8 +203,8 @@ void Seat::SeatLoad(int width, int length)
 	//파일 로드(매번 로드해서 링크드리스트에 저장함)
 	for (int i = 0; i < width * length; i++)
 	{
-		fileStream >> line;//wid, len을 모두 string으로 받아서 라인에 입력
+		fileStream >> line;
 		SeatLine(line);
 	}
 	fileStream.close();
-};
+}
