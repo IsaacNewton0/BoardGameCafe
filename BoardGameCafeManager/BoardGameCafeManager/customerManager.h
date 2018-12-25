@@ -84,12 +84,12 @@ public:
 	CustomerManager();
 
 	/*Operator*/
-	void TeenCustomerRegister(string name, string ph,int customerYear);//청소년 사용자 등록
-	void AdultCustomerRegister(string name, string ph, int customerYear);//성인 사용자 등록
+	void TeenCustomerRegister(string name, string ph,int customerYear);//청소년 사용자 등록(이름, 폰번호, 태어난 연도)
+	void AdultCustomerRegister(string name, string ph, int customerYear);//성인 사용자 등록(이름, 폰번호, 태어난 연도)
 	void CustomerList();//사용자 목록 출력
-	void CustomerSearch(string searchStr, string mod);// 사용자 검색
+	void CustomerSearch(string searchStr, string mod);// 사용자 검색 mod: name(이름으로 검색), phone(휴대폰번호-없이 검색) searchStr: 이름또는 휴대폰번호(검색 모드에 따라다름)
 	int IsAdult(string searchStr, string mod);// 청소년 성인 여부 체크(성인 : 2, 청소년 : 1, 검색 실패 ; 0)
-	void CustomerDelete(string searchStr, string mod);// 사용자 삭제
+	void CustomerDelete(string searchStr, string mod);// 사용자 삭제 mod: name(이름으로 검색), phone(휴대폰번호-없이 검색) searchStr: 이름또는 휴대폰번호(검색 모드에 따라다름)
 	void ShowMenu();// 메뉴 출력
 	void CustomerSave(string filename);// 사용자 목록 파일로 저장
 	void CustomerLoad(string filename);// 사용자 목록 파일 읽어오기
