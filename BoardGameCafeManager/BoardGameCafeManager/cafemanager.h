@@ -117,7 +117,7 @@ public:
 			getchar();
 			cout << "계속하려면 Enter를 누르세요";
 			getchar();
-			system("cls");
+			system("cls");//화면 클리어
 		}
 		// 함수 종료시 자동 세이브
 		customerManager->CustomerSave("CustomerInfo.txt");
@@ -205,6 +205,10 @@ public:
 				cout << "처음으로 돌아갑니다." << endl;
 				return;
 			}
+			getchar();
+			cout << "계속하려면 Enter를 누르세요";
+			getchar();
+			system("cls");//화면 클리어
 		}
 	}
 };

@@ -162,7 +162,7 @@ void CustomerManager::CustomerDelete(string searchStr, string mod)
 }
 void CustomerManager::ShowMenu()
 {
-	cout << "\n\n***********************" << endl;
+	cout << "***********************" << endl;
 	cout << "1. 성인 사용자 등록" << endl;
 	cout << "2. 청소년 사용자 등록" << endl;
 	cout << "3. 사용자 목록 출력" << endl;
