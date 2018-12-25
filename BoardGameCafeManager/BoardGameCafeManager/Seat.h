@@ -18,7 +18,6 @@ public:
 	void setNumber_a(int a_n);
 	void setNumber_c(int c_n);
 	void setTime(int n_t);
-	void setAge(std::string age);
 	void setMoney(int money);
 	void setLine(std::string l);
 	void setName(std::string n);
@@ -29,7 +28,6 @@ public:
 	int getNumber_a();
 	int getNumber_c();
 	int getTime();
-	std::string getAge();
 	int getMoney();
 	std::string getLine();
 	std::string getName();

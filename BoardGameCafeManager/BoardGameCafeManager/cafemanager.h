@@ -124,11 +124,14 @@ public:
 		int searchModint;// 검색 모드(숫자)
 		string searchModStr;// 검색 모드(문자열)
 		string searchStr;// 검색 모드에 따른 검색어
-
+		int wid = 5, len = 10; //wid : 자리의 가로열, len : 자리의 세로열
+		seat->SeatSave(wid, len);
+		seat->SeatLoad(wid, len);
 		while (true)
 		{
 			std::string line, name, g, age;//line: 자리, name: 이름, g:게임이름
 			int u_t, a_n, c_n;// u_t: 사용 시간, a_n:어른 수, c_n: 청소년 수
+			
 			seat->Showmenu(); cout << "선택: "; cin >> select;
 			switch (select)
 			{
@@ -187,7 +190,12 @@ public:
 				}
 				seat->SeatDelete(searchStr, searchModStr);
 				break;
-
+			case 5:
+				cout << "자리의 가로열와 세로열를 알려주세오 : ";
+				cin >> wid >> len;
+				seat->SeatSave(wid, len);
+				seat->SeatLoad(wid, len);
+				break;
 			case 0:
 				cout << "처음으로 돌아갑니다." << endl;
 				return;
