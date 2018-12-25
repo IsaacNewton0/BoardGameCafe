@@ -29,10 +29,6 @@ std::string Seat::getName() { return name; };
 Seat* Seat::getNext() { return next; };
 
 //기능 함수
-void Seat::seatMoney(int a_n, int c_n)
-{
-
-};
 void Seat::SeatLine(std::string line)
 {
 	Seat *seat = new Seat;

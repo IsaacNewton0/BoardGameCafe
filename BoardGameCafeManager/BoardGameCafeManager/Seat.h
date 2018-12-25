@@ -35,7 +35,6 @@ public:
 	std::string getName();
 	Seat* getNext();
 
-	void seatMoney(int a_n, int c_n);
 	void SeatLine(std::string line);
 	void SeatAdd(std::string line, std::string name, std::string game, int use_time, int a_n, int c_n);//사용자 등록(name : 손님 이름, line : 자리, number : 사람 수, game : 할 게임)
 	void SeatSave(int width, int length);
