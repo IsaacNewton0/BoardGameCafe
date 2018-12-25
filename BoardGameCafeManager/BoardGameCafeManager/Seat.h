@@ -35,12 +35,12 @@ public:
 	std::string getName();
 	Seat* getNext();
 
-	void SeatLine(std::string line);
+	void SeatLine(std::string line);//자리를 미리 지정
 	void SeatAdd(std::string line, std::string name, std::string game, int use_time, int a_n, int c_n);//사용자 등록(name : 손님 이름, line : 자리, number : 사람 수, game : 할 게임)
-	void SeatSave(int width, int length);
-	void SeatLoad(int width, int length);
+	void SeatSave(int width, int length);//자리 파일에 저장
+	void SeatLoad(int width, int length);//자리 파일을 로드
 	void SeatList();//사용자 리스트 출력
 	void SeatSearch(std::string searchStr, std::string mod);//사용자 검색(searchStr은 이름 또는 자리, mods == (line) || (name))
 	void SeatDelete(std::string searchStr, std::string mod);//사용자 삭제
-	void Showmenu();
+	void Showmenu();//함수 메뉴
 };

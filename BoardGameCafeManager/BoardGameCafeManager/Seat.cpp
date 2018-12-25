@@ -44,12 +44,12 @@ void Seat::SeatLine(std::string line)
 		this->last = seat;
 	}
 
-	seat->setLine(line);
+	seat->setLine(line);//자리 미리 저장
 };
 void Seat::SeatAdd(std::string line, std::string name, std::string g, int u_t, int a_n, int c_n)
 {
 	Seat *seat = NULL;
-	bool check = false;
+	bool check = false;//if문으로 자리 예약의 안정성을 높이기 위해
 
 	while (true)
 	{
@@ -57,7 +57,7 @@ void Seat::SeatAdd(std::string line, std::string name, std::string g, int u_t, i
 			seat = head;
 		if (line == seat->getLine())
 		{
-			money = (a_n * 2500 * u_t) + (c_n * 2000 * u_t);
+			money = (a_n * 2500 * u_t) + (c_n * 2000 * u_t);//돈 계산
 			seat->setName(name), seat->setNumber_a(a_n), seat->setNumber_c(c_n),
 				seat->setGame(g), seat->setTime(u_t), seat->setMoney(money);//각 변수의 저장
 			check = true;
@@ -173,7 +173,8 @@ void Seat::Showmenu()
 	std::cout << "2. 자리 예약 리스트\n";
 	std::cout << "3. 자리 예약 검색\n";
 	std::cout << "4. 자리 예약 삭제\n";
-	std::cout << "0. 돌아가기\n";
+	std::cout << "5. 자리 설정\n";//자리의 기본은 5, 10으로 하고 만약 자리가 달라진다면 사용
+	std::cout << "0. 돌아가기\n";//메인으로 돌아가기
 };
 void Seat::SeatSave(int width, int length)
 {
@@ -184,7 +185,7 @@ void Seat::SeatSave(int width, int length)
 	{
 		for (int j = 0; j < length; j++)
 		{
-			fileStream << i + 1 << "-" << j + 1 << std::endl;
+			fileStream << i + 1 << "-" << j + 1 << std::endl;//텍스트에 (가로 - 세로)로 저장
 		}
 	}
 	fileStream.close();
@@ -199,8 +200,8 @@ void Seat::SeatLoad(int width, int length)
 	//파일 로드(매번 로드해서 링크드리스트에 저장함)
 	for (int i = 0; i < width * length; i++)
 	{
-		fileStream >> line;
-		SeatLine(line);
+		fileStream >> line;//(가로 - 세로)로 저장되있는 데이터를 문자열로 받기
+		SeatLine(line);//문자열로 받아진 데이터로 미리 공간 지정
 	}
 	fileStream.close();
 }
