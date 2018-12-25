@@ -1,0 +1,5 @@
+#pragma once
+#ifndef CUSTOMSTATISTIC_H
+#define CUSTOMSTATISTIC_H
+
+#endif // !CUSTOMSTATISTIC_H
