@@ -7,7 +7,7 @@ class Seat
 {
 protected:
 	int wid, hig, time, money, a_number, c_number;//자리에 앉아있는 사람 수
-	std::string line, name, game, age;//자리 위치 : line / 손님 이름 : name
+	std::string line, name, game;//자리 위치 : line / 손님 이름 : name
 	Seat* next;//linked list node
 	Seat *head, *last;//linked list head, last
 public:
